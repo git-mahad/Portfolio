@@ -1,31 +1,37 @@
-import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Sidebar from "./Components/Sidebar/Sidebar.jsx";
+import Home from "./Components/Home/Home.jsx";
+import About from "./Components/About/About.jsx";
+import Resume from "./Components/Resume/Resume.jsx";
+import Portfolio from "./Components/Portfolio/Portfolio.jsx";
+import Services from "./Components/Services/Services.jsx";
+import Contact from "./Components/Contact/Contact.jsx";
 
-function Home() { /* delet this function*/
-  return <h1>Welcome to the Home Page</h1>;
-}
-
-function NotFound() {  /* delet this function*/
-  return <h1>404 - Page Not Found</h1>;
-}
-
-const router = createBrowserRouter([
-  {
-    path: '/',  // customise according to your project
-    element: <Home />,
-  },
-  {
-    path: '*',  // customise according to your project
-    element: <NotFound />,
-  },
-]);
+const MainLayout = () => (
+  <div>
+    <Sidebar />
+    <Home />
+    <About />
+    <Resume />
+    <Portfolio />
+    <Services />
+    <Contact />
+  </div>
+);
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <RouterProvider router={router} />
-      <p className="bg-red-500 text-white p-4">If this is red, Tailwind is working!</p>
-    </div>
+    <Router>
+      <div className="min-h-screen flex">
+        <Sidebar />
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<MainLayout />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
