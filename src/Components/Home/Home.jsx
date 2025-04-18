@@ -49,8 +49,8 @@ export default function Home() {
   }, [displayedText, isDeleting, textIndex]);
 
   // Responsive text sizes
-  const headingSize = windowSize.width < 640 ? 'text-4xl' : 
-                     windowSize.width < 768 ? 'text-5xl' : 'text-6xl';
+  const headingSize = windowSize.width < 640 ? 'text-4xl' :
+    windowSize.width < 768 ? 'text-5xl' : 'text-6xl';
   const subheadingSize = windowSize.width < 640 ? 'text-xl' : 'text-2xl';
 
   return (
@@ -68,8 +68,8 @@ export default function Home() {
 
       {/* Content */}
       <div className="relative z-10">
-        <section 
-          id="home" 
+        <section
+          id="home"
           className="min-h-screen flex flex-col justify-center items-center px-4"
           style={{
             paddingTop: windowSize.width < 768 ? '4rem' : '0',
