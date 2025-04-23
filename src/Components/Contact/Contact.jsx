@@ -47,11 +47,10 @@ const Contact = () => {
     };
 
     return (
-        <section 
-            id="contact" 
-            className={`min-h-screen text-white ${
-                isMobile ? 'px-4 py-8' : 'ml-64 p-6 md:p-12'
-            }`}
+        <section
+            id="contact"
+            className={`min-h-screen text-white ${isMobile ? 'px-4 py-8' : 'ml-64 p-6 md:p-12'
+                }`}
         >
             <div className="max-w-6xl mx-auto">
                 <h2 className={`font-bold mb-8 ${isMobile ? 'text-3xl' : 'text-4xl'}`}>CONTACT ME</h2>
@@ -68,9 +67,8 @@ const Contact = () => {
                                     href="mailto:mahad.dev3@gmail.com"
                                     className="flex items-center group hover:text-blue-400 transition-colors"
                                 >
-                                    <div className={`flex justify-center items-center ${
-                                        isMobile ? 'h-10 w-10' : 'h-12 w-12'
-                                    } min-w-[2.5rem] md:min-w-[3rem] rounded-full bg-gray-800 group-hover:bg-blue-900 transition-colors mr-3 md:mr-4`}>
+                                    <div className={`flex justify-center items-center ${isMobile ? 'h-10 w-10' : 'h-12 w-12'
+                                        } min-w-[2.5rem] md:min-w-[3rem] rounded-full bg-gray-800 group-hover:bg-blue-900 transition-colors mr-3 md:mr-4`}>
                                         <Mail className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
                                     </div>
                                     <div className="overflow-hidden">
@@ -86,9 +84,8 @@ const Contact = () => {
                                     href="tel:+923051479956"
                                     className="flex items-center group hover:text-green-400 transition-colors"
                                 >
-                                    <div className={`flex justify-center items-center ${
-                                        isMobile ? 'h-10 w-10' : 'h-12 w-12'
-                                    } min-w-[2.5rem] md:min-w-[3rem] rounded-full bg-gray-800 group-hover:bg-green-900 transition-colors mr-3 md:mr-4`}>
+                                    <div className={`flex justify-center items-center ${isMobile ? 'h-10 w-10' : 'h-12 w-12'
+                                        } min-w-[2.5rem] md:min-w-[3rem] rounded-full bg-gray-800 group-hover:bg-green-900 transition-colors mr-3 md:mr-4`}>
                                         <Phone className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
                                     </div>
                                     <div>
@@ -106,9 +103,8 @@ const Contact = () => {
                                     rel="noopener noreferrer"
                                     className="flex items-center group hover:text-green-400 transition-colors"
                                 >
-                                    <div className={`flex justify-center items-center ${
-                                        isMobile ? 'h-10 w-10' : 'h-12 w-12'
-                                    } min-w-[2.5rem] md:min-w-[3rem] rounded-full bg-gray-800 group-hover:bg-green-900 transition-colors mr-3 md:mr-4`}>
+                                    <div className={`flex justify-center items-center ${isMobile ? 'h-10 w-10' : 'h-12 w-12'
+                                        } min-w-[2.5rem] md:min-w-[3rem] rounded-full bg-gray-800 group-hover:bg-green-900 transition-colors mr-3 md:mr-4`}>
                                         <MessageCircle className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
                                     </div>
                                     <div>
@@ -121,9 +117,8 @@ const Contact = () => {
 
                                 {/* Location */}
                                 <div className="flex items-center">
-                                    <div className={`flex justify-center items-center ${
-                                        isMobile ? 'h-10 w-10' : 'h-12 w-12'
-                                    } min-w-[2.5rem] md:min-w-[3rem] rounded-full bg-gray-800 mr-3 md:mr-4`}>
+                                    <div className={`flex justify-center items-center ${isMobile ? 'h-10 w-10' : 'h-12 w-12'
+                                        } min-w-[2.5rem] md:min-w-[3rem] rounded-full bg-gray-800 mr-3 md:mr-4`}>
                                         <MapPin className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
                                     </div>
                                     <div>
@@ -198,9 +193,8 @@ const Contact = () => {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className={`flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 md:py-3 md:px-6 rounded-lg transition-colors text-sm md:text-base w-full md:w-auto ${
-                                            isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
-                                        }`}
+                                        className={`flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 md:py-3 md:px-6 rounded-lg transition-colors text-sm md:text-base w-full md:w-auto ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                                            }`}
                                     >
                                         {isSubmitting ? (
                                             <span>Sending...</span>

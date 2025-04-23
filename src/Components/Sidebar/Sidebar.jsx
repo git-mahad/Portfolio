@@ -22,10 +22,10 @@ export default function Sidebar() {
   }, []);
 
   const socialLinks = [
-    { icon: <Github size={18} />, href: 'https://github.com/muhammad-mahad', label: 'GitHub' },
+    { icon: <Github size={18} />, href: 'https://https://github.com/git-mahad', label: 'GitHub' },
     { icon: <Facebook size={18} />, href: 'https://facebook.com/muhammad.mahad', label: 'Facebook' },
-    { icon: <Linkedin size={18} />, href: 'https://linkedin.com/in/muhammad-mahad', label: 'LinkedIn' },
-    { icon: <MessageCircle size={18} />, href: 'https://wa.me/yourphonenumber', label: 'WhatsApp' },
+    { icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/in/mahad-dev', label: 'LinkedIn' },
+    { icon: <MessageCircle size={18} />, href: 'https://wa.me/+923051479956', label: 'WhatsApp' },
   ];
 
   const navLinks = [
