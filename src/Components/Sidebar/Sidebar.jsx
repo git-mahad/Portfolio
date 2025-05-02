@@ -4,26 +4,32 @@ import P6image from '../../assets/P6.jpg';
 
 export default function Sidebar() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth >= 768) {
-        setSidebarOpen(true);
+      const width = window.innerWidth;
+      setIsMobile(width < 640);
+      setIsTablet(width >= 640 && width < 1024);
+      
+      // 🚀 Key Change: Auto-close sidebar on resize to mobile/tablet if it was open
+      if (width >= 1024) {
+        setSidebarOpen(true); // Always show on desktop
       } else {
-        setSidebarOpen(false);
+        setSidebarOpen(false); // Auto-close when resizing to smaller screens
       }
     };
 
+    // Initialize and add event listener
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, []); // 🚀 Removed sidebarOpen from dependencies to prevent loop
 
   const socialLinks = [
-    { icon: <Github size={18} />, href: 'https://https://github.com/git-mahad', label: 'GitHub' },
-    { icon: <Facebook size={18} />, href: 'https://facebook.com/muhammad.mahad', label: 'Facebook' },
+    { icon: <Github size={18} />, href: 'https://github.com/git-mahad', label: 'GitHub' },
+    { icon: <Facebook size={18} />, href: 'https://www.facebook.com/profile.php?id=100079441698112', label: 'Facebook' },
     { icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/in/mahad-dev', label: 'LinkedIn' },
     { icon: <MessageCircle size={18} />, href: 'https://wa.me/+923051479956', label: 'WhatsApp' },
   ];
@@ -38,41 +44,45 @@ export default function Sidebar() {
   ];
 
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+    setSidebarOpen(prev => !prev);
   };
 
   return (
     <>
-      {/* Mobile menu button */}
-      {isMobile && (
+      {/* 🚀 Improved Hamburger Button */}
+      {(isMobile || isTablet) && (
         <button
           onClick={toggleSidebar}
-          className="fixed top-4 left-4 z-50 bg-gray-900 p-2 rounded-md text-white"
+          className={`fixed top-4 left-4 z-50 bg-gray-900 p-2 rounded-md text-white shadow-lg hover:bg-gray-800 transition-colors ${
+            sidebarOpen ? 'left-64' : 'left-4'
+          } ${isMobile ? 'transition-left duration-300' : ''}`}
           aria-label="Toggle menu"
         >
           {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       )}
 
-      {/* Sidebar */}
+      {/* 🚀 Improved Sidebar Animation */}
       <div
-        className={`fixed bg-gray-900 text-white flex flex-col items-center py-8 z-40 transition-all duration-300 ease-in-out
+        className={`fixed bg-gray-900 text-white flex flex-col items-center py-8 z-40 transition-all duration-300 ease-in-out shadow-xl
           ${isMobile ? 
-            `w-64 h-full ${sidebarOpen ? 'left-0' : '-left-64'}` : 
-            'left-0 top-0 h-full w-64'}
-        `}
+            `w-full h-screen ${sidebarOpen ? 'left-0' : '-left-full'}` :
+            isTablet ? 
+              `w-72 h-screen ${sidebarOpen ? 'left-0' : '-left-72'}` :
+              'left-0 top-0 h-screen w-72'}`}
       >
-        <div className="w-28 h-28 rounded-full overflow-hidden mb-3 border-2 border-gray-700">
-          <img 
-            src={P6image} 
-            alt="Muhammad Mahad" 
+        {/* Sidebar Content */}
+        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden mb-3 border-2 border-gray-700 shadow-lg">
+          <img
+            src={P6image}
+            alt="Muhammad Mahad"
             className="w-full h-full object-cover"
           />
         </div>
         <h2 className="text-xl font-semibold mb-3">Muhammad Mahad</h2>
-        <div className="flex space-x-2 mb-8">
+        <div className="flex space-x-2 mb-6">
           {socialLinks.map((social, index) => (
-            <a 
+            <a
               key={index}
               href={social.href}
               target="_blank"
@@ -88,10 +98,10 @@ export default function Sidebar() {
           <ul className="w-full">
             {navLinks.map((link, index) => (
               <li key={index} className="w-full">
-                <a 
+                <a
                   href={link.href}
                   className="flex items-center py-3 px-6 w-full hover:bg-blue-600 transition-colors"
-                  onClick={() => isMobile && setSidebarOpen(false)}
+                  onClick={() => (isMobile || isTablet) && setSidebarOpen(false)}
                 >
                   <span className="mr-3">{link.icon}</span>
                   {link.name}
@@ -102,11 +112,12 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      {/* Overlay for mobile */}
-      {isMobile && sidebarOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-30"
+      {/* 🚀 Improved Overlay */}
+      {(isMobile || isTablet) && sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 backdrop-blur-sm"
           onClick={toggleSidebar}
+          aria-hidden="true"
         />
       )}
     </>
