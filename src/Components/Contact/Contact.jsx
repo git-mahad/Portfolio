@@ -13,6 +13,7 @@ const Contact = () => {
     const [submitStatus, setSubmitStatus] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [isTablet, setIsTablet] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
@@ -20,6 +21,7 @@ const Contact = () => {
             const width = window.innerWidth;
             setIsMobile(width < 640);
             setIsTablet(width >= 640 && width < 1024);
+            setIsDesktop(width >= 1024);
 
             // Match sidebar behavior - automatically adjust margin based on screen size
             if (width >= 1024) {
@@ -34,6 +36,18 @@ const Contact = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    const getLayoutClasses = () => {
+        if (isMobile) {
+            return 'text-3xl';
+        } else if (isTablet) {
+            return 'text-4xl';
+        } else {
+            return 'text-5xl';
+        }
+    };
+
+    const titleClass = getLayoutClasses();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -70,7 +84,10 @@ const Contact = () => {
                 }`}
         >
             <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-12">CONTACT ME</h2>
+                <h2 className={`font-bold mb-8 ${titleClass}`}>
+                    CONTACT ME
+                    <div className="h-1 w-12 bg-blue-500 mt-3"></div>
+                </h2>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
                     {/* Contact Information */}

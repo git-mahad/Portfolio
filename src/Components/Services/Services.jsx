@@ -5,53 +5,43 @@ const Services = () => {
   const [activeService, setActiveService] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 640);
       setIsTablet(window.innerWidth >= 640 && window.innerWidth < 1024);
+      setIsDesktop(window.innerWidth >= 1024);
     };
 
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+  
+  const getLayoutClasses = () => {
+    if (isMobile) {
+      return 'text-3xl';
+    } else if (isTablet) {
+      return 'text-4xl';
+    } else {
+      return 'text-5xl';
+    }
+  };
+
+  const titleClass = getLayoutClasses();
 
   const services = [
     {
       id: 1,
-      title: "C & C++ Task",
-      description: "Expert implementation of memory-efficient and performance-optimized solutions using C and C++.",
-      icon: <Code className="w-8 h-8 md:w-10 md:h-10 text-blue-400" />,
-      details: "Specialized in developing high-performance applications, system utilities, and embedded systems using C and C++. I focus on memory optimization, efficient algorithms, and cross-platform compatibility to deliver robust solutions that meet your specific requirements.",
-      features: ["Algorithm Optimization", "Memory Management", "System Programming", "Performance Tuning"]
+      title: "MERN Developer",
+      description: "Full-stack development using MongoDB, Express, React, and Node.js.",
+      icon: <LayoutGrid className="w-8 h-8 md:w-10 md:h-10 text-indigo-400" />,
+      details: "Comprehensive MERN stack development services covering everything from database design to front-end implementation. I build scalable, modern web applications with clean code, effective state management, and optimized performance.",
+      features: ["Full-stack Integration", "State Management", "Component Architecture", "API Design"]
     },
     {
       id: 2,
-      title: "Database Design",
-      description: "Structured database architecture that scales with your application needs.",
-      icon: <Database className="w-8 h-8 md:w-10 md:h-10 text-green-400" />,
-      details: "Comprehensive database design services that focus on data integrity, performance, and scalability. I create efficient schema designs, implement proper indexing strategies, and optimize query performance to ensure your data layer supports your application's growth.",
-      features: ["Schema Design", "Query Optimization", "Data Modeling", "Migration Planning"]
-    },
-    {
-      id: 3,
-      title: "Static Website",
-      description: "Fast-loading, responsive static websites with modern design principles.",
-      icon: <Globe className="w-8 h-8 md:w-10 md:h-10 text-purple-400" />,
-      details: "Development of lightning-fast static websites that deliver exceptional user experience across all devices. I leverage modern frameworks and best practices to create visually appealing, SEO-friendly sites with minimal maintenance requirements.",
-      features: ["Responsive Design", "SEO Optimization", "Performance Focused", "Modern UI/UX"]
-    },
-    {
-      id: 4,
-      title: "Backend Design (Node.js)",
-      description: "Robust and scalable backend solutions powered by Node.js.",
-      icon: <Server className="w-8 h-8 md:w-10 md:h-10 text-red-400" />,
-      details: "End-to-end backend development using Node.js to create scalable, maintainable APIs and server applications. I implement efficient data processing, authentication systems, and third-party integrations while ensuring security and performance.",
-      features: ["RESTful APIs", "Authentication Systems", "Microservices", "Real-time Applications"]
-    },
-    {
-      id: 5,
       title: "Troubleshooting (MERN Project)",
       description: "Expert debugging and optimization for MERN stack applications.",
       icon: <Bug className="w-8 h-8 md:w-10 md:h-10 text-yellow-400" />,
@@ -59,13 +49,39 @@ const Services = () => {
       features: ["Performance Analysis", "Error Resolution", "Code Refactoring", "Architecture Review"]
     },
     {
+      id: 3,
+      title: "Backend Design (Node.js)",
+      description: "Robust and scalable backend solutions powered by Node.js.",
+      icon: <Server className="w-8 h-8 md:w-10 md:h-10 text-red-400" />,
+      details: "End-to-end backend development using Node.js to create scalable, maintainable APIs and server applications. I implement efficient data processing, authentication systems, and third-party integrations while ensuring security and performance.",
+      features: ["RESTful APIs", "Authentication Systems", "Microservices", "Real-time Applications"]
+    },
+    {
+      id: 4,
+      title: "Static Website",
+      description: "Fast-loading, responsive static websites with modern design principles.",
+      icon: <Globe className="w-8 h-8 md:w-10 md:h-10 text-purple-400" />,
+      details: "Development of lightning-fast static websites that deliver exceptional user experience across all devices. I leverage modern frameworks and best practices to create visually appealing, SEO-friendly sites with minimal maintenance requirements.",
+      features: ["Responsive Design", "SEO Optimization", "Performance Focused", "Modern UI/UX"]
+    },
+    {
+      id: 5,
+      title: "Database Design",
+      description: "Structured database architecture that scales with your application needs.",
+      icon: <Database className="w-8 h-8 md:w-10 md:h-10 text-green-400" />,
+      details: "Comprehensive database design services that focus on data integrity, performance, and scalability. I create efficient schema designs, implement proper indexing strategies, and optimize query performance to ensure your data layer supports your application's growth.",
+      features: ["Schema Design", "Query Optimization", "Data Modeling", "Migration Planning"]
+    },
+    {
       id: 6,
-      title: "MERN Developer",
-      description: "Full-stack development using MongoDB, Express, React, and Node.js.",
-      icon: <LayoutGrid className="w-8 h-8 md:w-10 md:h-10 text-indigo-400" />,
-      details: "Comprehensive MERN stack development services covering everything from database design to front-end implementation. I build scalable, modern web applications with clean code, effective state management, and optimized performance.",
-      features: ["Full-stack Integration", "State Management", "Component Architecture", "API Design"]
-    }
+      title: "C & C++ Task",
+      description: "Expert implementation of memory-efficient and performance-optimized solutions using C and C++.",
+      icon: <Code className="w-8 h-8 md:w-10 md:h-10 text-blue-400" />,
+      details: "Specialized in developing high-performance applications, system utilities, and embedded systems using C and C++. I focus on memory optimization, efficient algorithms, and cross-platform compatibility to deliver robust solutions that meet your specific requirements.",
+      features: ["Algorithm Optimization", "Memory Management", "System Programming", "Performance Tuning"]
+    },
+    
+
     // {
     //   id: 7,
     //   title: "Salesforce",
@@ -85,7 +101,10 @@ const Services = () => {
       `}
     >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-12">SERVICES</h2>
+        <h2 className={`font-bold mb-8 ${titleClass}`}>
+          SERVICES
+          <div className="h-1 w-12 bg-blue-500 mt-3"></div>
+        </h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {services.map((service) => (

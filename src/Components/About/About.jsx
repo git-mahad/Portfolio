@@ -47,10 +47,23 @@ export default function About() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+  
   const isMobile = windowSize.width < 640;
   const isTablet = windowSize.width >= 640 && windowSize.width < 1024;
   const isDesktop = windowSize.width >= 1024;
   const sidebarOffset = isDesktop ? 'lg:ml-72' : '';
+  
+  const getLayoutClasses = () => {
+    if (isMobile) {
+      return 'text-3xl';
+    } else if (isTablet) {
+      return 'text-4xl';
+    } else {
+      return 'text-5xl';
+    }
+  };
+
+  const titleClass = getLayoutClasses();
   
   return (
     <section 
@@ -58,9 +71,12 @@ export default function About() {
       className={`${sidebarOffset} min-h-screen py-16 px-4 sm:px-6 md:px-8 lg:px-12 text-white`}
     >
       <div className="max-w-4xl mx-auto">
+        <h2 className={`font-bold mb-8 ${titleClass}`}>
+          ABOUT
+          <div className="h-1 w-12 bg-blue-500 mt-3"></div>
+        </h2>
+        
         <div className="bg-gray-900 bg-opacity-70 p-4 sm:p-6 md:p-8 rounded-lg mb-12 shadow-lg">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 md:mb-8 text-center sm:text-left">ABOUT</h2>
-          
           <p className="mb-6 text-sm sm:text-base">
           A recent BSCS graduate from UET Lahore with a strong foundation in frontend and backend development, 
           as well as database management. Proficient in JavaScript, HTML, CSS, and familiar with modern frameworks 
@@ -91,7 +107,7 @@ export default function About() {
                   </p>
                   <p className="flex flex-wrap text-sm sm:text-base">
                     <span className="font-semibold w-20">Site:</span>
-                    <span>portfolio-six-orcin-97.vercel.app</span>
+                    <span>linkedin.com/in/mahad-dev</span>
                   </p>
                   <p className="flex flex-wrap text-sm sm:text-base">
                     <span className="font-semibold w-20">City:</span>

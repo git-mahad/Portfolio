@@ -23,8 +23,8 @@ const Portfolio = () => {
         category: "APP WEB",
         image: TextEditor,
         details: "Features include live user count, connection status indicators, and an elegant, responsive interface.",
-        features: ["Live User Count", "Connection Status Indicators", "Instant Synchronization", "Responsive Interface"]
-
+        features: ["Live User Count", "Connection Status Indicators", "Instant Synchronization", "Responsive Interface"],
+        // url: "https://collaborative-text-editor.example.com"
       },
       {
         id: 2,
@@ -42,10 +42,11 @@ const Portfolio = () => {
           "Persistent state management using React Hooks",
           "Dynamic balance updates based on transactions"
         ],
+        // url: "https://expense-tracker.example.com"
       },
       {
         id: 3,
-        title: "Mindful Unicorn",
+        title: "Sports News",
         description: "A React-based sports news application that fetches and displays latest sports news including cricket, football, hockey, badminton, and tennis with search and category filters.",
         features: [
           "Search sports news by keyword",
@@ -56,7 +57,8 @@ const Portfolio = () => {
         ],
         category: "WEB",
         image: SportNews,
-        details: "Mindful Unicorn is a React web app designed to display live sports news with real-time search, multiple category filters, and a card-based news display system."
+        details: "Mindful Unicorn is a React web app designed to display live sports news with real-time search, multiple category filters, and a card-based news display system.",
+        // url: "https://mindful-unicorn.example.com"
       },
       {
         id: 4,
@@ -71,7 +73,8 @@ const Portfolio = () => {
         ],
         category: "APP",
         image: WeatheApp,
-        details: "World Weather Monitor offers current temperature, humidity, and wind speed details for any city searched. It provides accurate weather info with a clean interface and effective error handling."
+        details: "World Weather Monitor offers current temperature, humidity, and wind speed details for any city searched. It provides accurate weather info with a clean interface and effective error handling.",
+        // url: "https://weather-monitor.example.com"
       }
     ],
     APP: [
@@ -91,6 +94,7 @@ const Portfolio = () => {
           "Persistent state management using React Hooks",
           "Dynamic balance updates based on transactions"
         ],
+        // url: "https://expense-tracker.example.com"
       },
       {
         id: 2,
@@ -105,13 +109,14 @@ const Portfolio = () => {
         ],
         category: "APP",
         image: WeatheApp,
-        details: "World Weather Monitor offers current temperature, humidity, and wind speed details for any city searched. It provides accurate weather info with a clean interface and effective error handling."
+        details: "World Weather Monitor offers current temperature, humidity, and wind speed details for any city searched. It provides accurate weather info with a clean interface and effective error handling.",
+        // url: "https://weather-monitor.example.com"
       }
     ],
     WEB: [
       {
         id: 1,
-        title: "Mindful Unicorn",
+        title: "Sports News ",
         description: "A React-based sports news application that fetches and displays latest sports news including cricket, football, hockey, badminton, and tennis with search and category filters.",
         features: [
           "Search sports news by keyword",
@@ -122,7 +127,8 @@ const Portfolio = () => {
         ],
         category: "WEB",
         image: SportNews,
-        details: "Mindful Unicorn is a React web app designed to display live sports news with real-time search, multiple category filters, and a card-based news display system."
+        details: "Mindful Unicorn is a React web app designed to display live sports news with real-time search, multiple category filters, and a card-based news display system.",
+        // url: "https://mindful-unicorn.example.com"
       },
       {
         id: 2,
@@ -132,7 +138,8 @@ const Portfolio = () => {
         category: "WEB",
         image: TextEditor,
         details: "Features include live user count, connection status indicators, and an elegant, responsive interface.",
-        features: ["Live User Count", "Connection Status Indicators", "Instant Synchronization", "Responsive Interface"]
+        features: ["Live User Count", "Connection Status Indicators", "Instant Synchronization", "Responsive Interface"],
+        // url: "https://collaborative-text-editor.example.com"
       }
     ]
   };
@@ -187,6 +194,11 @@ const Portfolio = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setTimeout(() => setSelectedProject(null), 300);
+  };
+
+  const handleViewLiveProject = (url, e) => {
+    e.stopPropagation();
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const getLayoutClasses = () => {
@@ -272,6 +284,16 @@ const Portfolio = () => {
                 </div>
                 <h3 className="font-bold text-lg md:text-xl mb-1">{project.title}</h3>
                 <p className="text-gray-300 text-sm md:text-base line-clamp-2">{project.description}</p>
+                
+                {/* Add View Live Project button directly in the card */}
+                <div className="mt-4">
+                  <button 
+                    onClick={(e) => handleViewLiveProject(project.url, e)}
+                    className="bg-blue-600 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm font-medium transition flex items-center"
+                  >
+                    View Live Project <ExternalLink size={14} className="ml-2" />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -340,9 +362,14 @@ const Portfolio = () => {
                   )}
 
                   <div className="mt-8 flex justify-center">
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-full font-medium transition flex items-center">
+                    <a 
+                      href={selectedProject.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-full font-medium transition flex items-center"
+                    >
                       View Live Project <ExternalLink size={16} className="ml-2" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
