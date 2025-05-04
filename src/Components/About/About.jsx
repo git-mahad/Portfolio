@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import P6image from '../../assets/P6.jpg';
+import P6image from '../../assets/About.jpeg';
 
 const MilestoneItem = ({ end, text, showPlus = false }) => {
   const [count, setCount] = useState(0);
@@ -47,13 +47,9 @@ export default function About() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  // Calculate responsive values based on screen size
   const isMobile = windowSize.width < 640;
   const isTablet = windowSize.width >= 640 && windowSize.width < 1024;
   const isDesktop = windowSize.width >= 1024;
-
-  // Sidebar offset for content
   const sidebarOffset = isDesktop ? 'lg:ml-72' : '';
   
   return (
@@ -90,12 +86,12 @@ export default function About() {
                     <span>Muhammad Mahad</span>
                   </p>
                   <p className="flex flex-wrap text-sm sm:text-base">
-                    <span className="font-semibold w-20">Site:</span>
-                    <span>link</span>
-                  </p>
-                  <p className="flex flex-wrap text-sm sm:text-base">
                     <span className="font-semibold w-20">Phone:</span>
                     <span>+92 3051479956</span>
+                  </p>
+                  <p className="flex flex-wrap text-sm sm:text-base">
+                    <span className="font-semibold w-20">Site:</span>
+                    <span>portfolio-six-orcin-97.vercel.app</span>
                   </p>
                   <p className="flex flex-wrap text-sm sm:text-base">
                     <span className="font-semibold w-20">City:</span>
@@ -118,7 +114,7 @@ export default function About() {
                   </p>
                   <p className="flex flex-wrap text-sm sm:text-base">
                     <span className="font-semibold w-20">Skills:</span>
-                    <span>MERN & CRM</span>
+                    <span>MERN, React</span>
                   </p>
                 </div>
               </div>

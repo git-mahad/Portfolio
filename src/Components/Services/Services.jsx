@@ -65,15 +65,15 @@ const Services = () => {
       icon: <LayoutGrid className="w-8 h-8 md:w-10 md:h-10 text-indigo-400" />,
       details: "Comprehensive MERN stack development services covering everything from database design to front-end implementation. I build scalable, modern web applications with clean code, effective state management, and optimized performance.",
       features: ["Full-stack Integration", "State Management", "Component Architecture", "API Design"]
-    },
-    {
-      id: 7,
-      title: "Salesforce",
-      description: "Custom Salesforce implementations and integrations for business growth.",
-      icon: <Cloud className="w-8 h-8 md:w-10 md:h-10 text-sky-400" />,
-      details: "Expert Salesforce development and customization services to streamline your business processes. I create custom objects, automate workflows, develop Lightning components, and integrate Salesforce with external systems to maximize your ROI.",
-      features: ["Custom Development", "Process Automation", "Integration Solutions", "User Training"]
     }
+    // {
+    //   id: 7,
+    //   title: "Salesforce",
+    //   description: "Custom Salesforce implementations and integrations for business growth.",
+    //   icon: <Cloud className="w-8 h-8 md:w-10 md:h-10 text-sky-400" />,
+    //   details: "Expert Salesforce development and customization services to streamline your business processes. I create custom objects, automate workflows, develop Lightning components, and integrate Salesforce with external systems to maximize your ROI.",
+    //   features: ["Custom Development", "Process Automation", "Integration Solutions", "User Training"]
+    // }
   ];
 
   return (
@@ -87,7 +87,6 @@ const Services = () => {
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-12">SERVICES</h2>
         
-        {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {services.map((service) => (
             <div 
@@ -112,7 +111,6 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Service Modal */}
         {activeService && (
           <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
             <div className="bg-gray-900 rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">

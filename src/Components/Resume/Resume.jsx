@@ -60,37 +60,29 @@ export default function Resume() {
         degree: "BACHELOR OF COMPUTER SCIENCE",
         institution: "UET Lahore, Pakistan",
         period: "11/2021 - 05/2025",
-        description: "Focused on software engineering, database systems, and web development, with coursework in algorithms, data structures, and full-stack development.",
-        achievements: [
-          "Dean's List (Fall 2022, Spring 2023)",
-          "Undergraduate Research Assistant - Web Technologies Lab",
-          "Winner, Campus Hackathon 2023"
-        ]
-      },
-      {
-        degree: "HIGH SCHOOL DIPLOMA",
-        institution: "City College, Lahore",
-        period: "05/2019 - 04/2021",
-        description: "Graduated with distinction, specializing in Computer Science and Mathematics.",
-        achievements: [
-          "Valedictorian",
-          "President of Computer Science Club"
-        ]
+        description: "Studied core concepts in computer science, including software engineering, database systems, and web development.",
+        relevantCoursework: [
+          "Advanced Database Systems",
+          "Object-Oriented Programming",
+          "Data Structures & Algorithms",
+          "Web Application Development",
+          "Software Engineering Principles"
+        ],
       }
     ],
     experience: [
       {
-        title: "Software Engineer | Intern",
+        title: "Frontend Developer (Contract)",
         company: "New Frontier Lab",
-        location: "Lahore, Pakistan",
-        type: "Full Time | Onsite",
+        location: "Remote (Lahore, Pakistan)",
+        type: "Contract | Remote",
         period: "06/2024 - 09/2024",
-        description: "Contributed to development of enterprise-level web applications and notification systems.",
+        description: "Frontend Developer specializing in HTML, CSS, JavaScript, and React to create engaging web applications.",
         responsibilities: [
-          "Designed and implemented a real-time notification system using WebSockets",
-          "Developed responsive user interfaces using React and Tailwind CSS",
-          "Collaborated with cross-functional teams to implement new features",
-          "Participated in code reviews and testing procedures"
+          "Developed responsive user interfaces with React, HTML, and CSS.",
+          "Enhanced user engagement through effective web application implementation.",
+          "Collaborated with designers and backend developers for seamless functionality.",
+          "Contributed to code reviews to maintain high code quality."
         ]
       },
       {
@@ -98,50 +90,50 @@ export default function Resume() {
         company: "Fiverr.com",
         location: "Remote",
         type: "Full Time | Remote",
-        period: "09/2024 - Present",
+        period: "11/2024 - Present",
         description: "Providing end-to-end web development services as a Full Stack Developer for clients worldwide.",
         responsibilities: [
-          "Full-Stack Development: Delivering comprehensive web solutions including frontend development (HTML, CSS, JavaScript) and backend implementation (Node.js, Express) for diverse client projects.",
-          "Database Expertise: Designing and optimizing database architectures, ensuring efficient data storage and retrieval for application requirements.",
-          "Client Solutions: Developing customized web applications tailored to specific business needs, from concept through deployment.",
-          "Technical Implementation: Building responsive interfaces and robust server-side functionality to create seamless user experiences.",
-          "Project Delivery: Ensuring timely completion of development milestones while maintaining code quality and performance standards."
+          "Delivering full-stack web solutions, including frontend (HTML, CSS, JavaScript) and backend (Node.js, Express) development.",
+          "Designing and optimizing database architectures for efficient data management.",
+          "Creating customized web applications tailored to client needs from concept to deployment.",
+          "Building responsive interfaces and robust server-side functionality for seamless user experiences.",
+          "Ensuring timely project delivery while maintaining high code quality."
         ]
       }
     ],
     skills: [
       {
         category: "Frontend",
-        items: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Tailwind CSS", "Bootstrap"]
+        items: ["HTML5", "CSS3", "JavaScript", "React", "Tailwind CSS", "Bootstrap"]
       },
       {
         category: "Backend",
-        items: ["Node.js", "Express", "MongoDB", "SQL", "Firebase", "REST APIs"]
+        items: ["Node.js", "Express", "MongoDB", "SQL", "REST APIs"]
       },
       {
         category: "Tools & Technologies",
-        items: ["Git", "GitHub", "VS Code", "Figma", "Vercel", "Netlify", "Heroku"]
+        items: ["Git", "GitHub", "VS Code", "Google Meet", "Vercel", "Chatgpt", "Slack"]
       },
       {
         category: "Soft Skills",
-        items: ["Project Management", "Team Collaboration", "Communication", "Problem Solving", "Time Management"]
+        items: ["Team Collaboration", "Communication", "Problem Solving", "Time Management"]
       }
     ],
     certifications: [
       {
-        title: "Full Stack Web Development",
+        title: "HTML && CSS",
         issuer: "Udemy",
-        date: "2023"
-      },
-      {
-        title: "React - The Complete Guide",
-        issuer: "Coursera",
         date: "2022"
       },
       {
-        title: "MongoDB for JavaScript Developers",
-        issuer: "MongoDB University",
+        title: "Complete Frontend Course",
+        issuer: "Coursera",
         date: "2023"
+      },
+      {
+        title: "Full Stack Developer",
+        issuer: "Udemy",
+        date: "2023-24"
       }
     ]
   };
@@ -157,10 +149,19 @@ export default function Resume() {
                 <GraduationCap size={16} className="mr-2" />
                 {edu.institution}
               </div>
+              {edu.specialization && (
+                <div className="text-gray-300 text-sm mt-1">
+                  Specialization: {edu.specialization}
+                </div>
+              )}
+              {/* {edu.gpa && (
+                <div className="text-gray-300 text-sm mt-1">
+                  GPA: {edu.gpa}
+                </div>
+              )} */}
             </div>
-            <span className={`bg-blue-600 text-white px-3 py-1 rounded text-xs md:text-sm flex items-center ${
-              screenSize === 'mobile' ? 'self-start mt-2' : ''
-            }`}>
+            <span className={`bg-blue-600 text-white px-3 py-1 rounded text-xs md:text-sm flex items-center ${screenSize === 'mobile' ? 'self-start mt-2' : ''
+              }`}>
               <Calendar size={14} className="mr-1" />
               {edu.period}
             </span>
@@ -168,12 +169,12 @@ export default function Resume() {
           <p className="text-sm md:text-base mb-4 text-gray-300">
             {edu.description}
           </p>
-          {edu.achievements && (
+          {edu.relevantCoursework && (
             <div className="mt-3">
-              <h5 className="text-sm font-semibold text-gray-200 mb-2">Achievements:</h5>
+              <h5 className="text-sm font-semibold text-gray-200 mb-2">Relevant Coursework:</h5>
               <ul className="list-disc pl-5 space-y-1 text-sm md:text-base text-gray-300">
-                {edu.achievements.map((achievement, i) => (
-                  <li key={i}>{achievement}</li>
+                {edu.relevantCoursework.map((course, i) => (
+                  <li key={i}>{course}</li>
                 ))}
               </ul>
             </div>
@@ -199,9 +200,8 @@ export default function Resume() {
                 {exp.location} • {exp.type}
               </div>
             </div>
-            <span className={`bg-blue-600 text-white px-3 py-1 rounded text-xs md:text-sm flex items-center ${
-              screenSize === 'mobile' ? 'self-start mt-2' : ''
-            }`}>
+            <span className={`bg-blue-600 text-white px-3 py-1 rounded text-xs md:text-sm flex items-center ${screenSize === 'mobile' ? 'self-start mt-2' : ''
+              }`}>
               <Calendar size={14} className="mr-1" />
               {exp.period}
             </span>
@@ -236,7 +236,7 @@ export default function Resume() {
           </div>
         </div>
       ))}
-      
+
       {/* Certifications */}
       <div className="md:col-span-2 bg-gray-800 bg-opacity-50 p-5 rounded-lg border border-gray-700 mt-3">
         <h4 className="text-lg font-semibold mb-4 text-blue-400">Certifications</h4>
@@ -256,8 +256,8 @@ export default function Resume() {
   );
 
   return (
-    <section 
-      id="resume" 
+    <section
+      id="resume"
       className={`min-h-screen text-white transition-all duration-300 ${layout.container}`}
     >
       <div className="max-w-5xl mx-auto">
@@ -269,22 +269,27 @@ export default function Resume() {
             </h2>
             <p className="text-gray-400 mb-6 md:mb-0">My academic and professional journey</p>
           </div>
-          
-          <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center self-start transition-colors">
+
+          <a
+            href="https://drive.google.com/file/d/1urmvt_ADecyu6uL5fx0wvJvAr64hpSTw/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center self-start transition-colors"
+          >
             <Download size={18} className="mr-2" />
             Download CV
-          </button>
+          </a>
+
         </div>
 
         {/* Tabs */}
         <div className="border-b border-gray-700 mb-8">
           <div className="flex space-x-1 md:space-x-4">
             <button
-              className={`py-3 px-4 md:px-6 border-b-2 transition-colors ${
-                activeTab === 'experience' 
-                  ? 'border-blue-500 text-blue-400' 
-                  : 'border-transparent text-gray-400 hover:text-white'
-              }`}
+              className={`py-3 px-4 md:px-6 border-b-2 transition-colors ${activeTab === 'experience'
+                ? 'border-blue-500 text-blue-400'
+                : 'border-transparent text-gray-400 hover:text-white'
+                }`}
               onClick={() => setActiveTab('experience')}
             >
               <span className="flex items-center">
@@ -293,11 +298,10 @@ export default function Resume() {
               </span>
             </button>
             <button
-              className={`py-3 px-4 md:px-6 border-b-2 transition-colors ${
-                activeTab === 'education' 
-                  ? 'border-blue-500 text-blue-400' 
-                  : 'border-transparent text-gray-400 hover:text-white'
-              }`}
+              className={`py-3 px-4 md:px-6 border-b-2 transition-colors ${activeTab === 'education'
+                ? 'border-blue-500 text-blue-400'
+                : 'border-transparent text-gray-400 hover:text-white'
+                }`}
               onClick={() => setActiveTab('education')}
             >
               <span className="flex items-center">
@@ -306,11 +310,10 @@ export default function Resume() {
               </span>
             </button>
             <button
-              className={`py-3 px-4 md:px-6 border-b-2 transition-colors ${
-                activeTab === 'skills' 
-                  ? 'border-blue-500 text-blue-400' 
-                  : 'border-transparent text-gray-400 hover:text-white'
-              }`}
+              className={`py-3 px-4 md:px-6 border-b-2 transition-colors ${activeTab === 'skills'
+                ? 'border-blue-500 text-blue-400'
+                : 'border-transparent text-gray-400 hover:text-white'
+                }`}
               onClick={() => setActiveTab('skills')}
             >
               <span className="flex items-center">

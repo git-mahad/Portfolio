@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Facebook, Linkedin, MessageCircle, User, FileText, Briefcase, Award, Mail, Menu, X } from 'lucide-react';
-import P6image from '../../assets/P6.jpg';
+import P6image from '../../assets/About.jpeg';
 
 export default function Sidebar() {
   const [isMobile, setIsMobile] = useState(false);
@@ -13,19 +13,17 @@ export default function Sidebar() {
       setIsMobile(width < 640);
       setIsTablet(width >= 640 && width < 1024);
       
-      // 🚀 Key Change: Auto-close sidebar on resize to mobile/tablet if it was open
       if (width >= 1024) {
-        setSidebarOpen(true); // Always show on desktop
+        setSidebarOpen(true); 
       } else {
-        setSidebarOpen(false); // Auto-close when resizing to smaller screens
+        setSidebarOpen(false);
       }
     };
 
-    // Initialize and add event listener
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []); // 🚀 Removed sidebarOpen from dependencies to prevent loop
+  }, [])
 
   const socialLinks = [
     { icon: <Github size={18} />, href: 'https://github.com/git-mahad', label: 'GitHub' },
@@ -49,7 +47,6 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* 🚀 Improved Hamburger Button */}
       {(isMobile || isTablet) && (
         <button
           onClick={toggleSidebar}
@@ -62,7 +59,6 @@ export default function Sidebar() {
         </button>
       )}
 
-      {/* 🚀 Improved Sidebar Animation */}
       <div
         className={`fixed bg-gray-900 text-white flex flex-col items-center py-8 z-40 transition-all duration-300 ease-in-out shadow-xl
           ${isMobile ? 
@@ -71,7 +67,6 @@ export default function Sidebar() {
               `w-72 h-screen ${sidebarOpen ? 'left-0' : '-left-72'}` :
               'left-0 top-0 h-screen w-72'}`}
       >
-        {/* Sidebar Content */}
         <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden mb-3 border-2 border-gray-700 shadow-lg">
           <img
             src={P6image}
@@ -112,7 +107,6 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      {/* 🚀 Improved Overlay */}
       {(isMobile || isTablet) && sidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-30 backdrop-blur-sm"

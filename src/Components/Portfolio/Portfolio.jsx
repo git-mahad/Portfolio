@@ -1,94 +1,138 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import TextEditor from '../../assets/Projects/Collaborative_Text_Editor.png'
+import ExpenseTracker from '../../assets/Projects/Expense_Tracker.png'
+import SportNews from '../../assets/Projects/Sport_new_site.png'
+import WeatheApp from '../../assets/Projects/Weather_app.png'
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('ALL');
   const [selectedProject, setSelectedProject] = useState(null);
   const [screenSize, setScreenSize] = useState('desktop');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   const modalRef = useRef(null);
 
-  // Project data
   const projects = {
     ALL: [
       {
         id: 1,
-        title: "Smart Stitchers",
-        year: "2016/11",
-        description: "BECAUDER BROOKLYN & SOUNTLY",
+        title: "Collaborative Text Editor",
+        // year: "2024/06",
+        description: "A real-time collaborative text editor built with React and WebSockets. Multiple users can simultaneously edit the same document with instant synchronization across all clients.",
         category: "APP WEB",
-        image: "/api/placeholder/400/300",
-        details: "Full description of Smart Stitchers project. This innovative application combines machine learning with crafting techniques to help amateur stitchers create professional-looking designs.",
-        features: ["Pattern Recognition", "Real-time Guidance", "Community Sharing"]
+        image: TextEditor,
+        details: "Features include live user count, connection status indicators, and an elegant, responsive interface.",
+        features: ["Live User Count", "Connection Status Indicators", "Instant Synchronization", "Responsive Interface"]
+
       },
       {
         id: 2,
-        title: "Text App",
-        description: "Communication platform",
-        features: ["TEXTS", "CALL", "PAGES"],
+        title: "Expense Tracker",
+        // year: "2024/07",
+        description: "A simple React-based Expense Tracker application that allows users to add income and expenses dynamically, view their balance, and track transactions.",
         category: "APP",
-        image: "/api/placeholder/400/300",
-        details: "Full description of Text App project. A comprehensive communication solution for businesses and individuals featuring secure messaging, voice calling, and collaborative workspaces."
+        image: ExpenseTracker,
+        details: "This application allows users to add transactions (income or expenses), view their total balance, and track financial activities effectively. It features a responsive and user-friendly UI with persistent state management using React Hooks.",
+        features: [
+          "Add transactions (income or expenses)",
+          "View total balance",
+          "View a summary of income and expenses",
+          "Responsive and user-friendly UI",
+          "Persistent state management using React Hooks",
+          "Dynamic balance updates based on transactions"
+        ],
       },
       {
         id: 3,
         title: "Mindful Unicorn",
-        description: "University Project",
-        features: ["Made by The Same Manufacturer As", "BMI Calculator"],
+        description: "A React-based sports news application that fetches and displays latest sports news including cricket, football, hockey, badminton, and tennis with search and category filters.",
+        features: [
+          "Search sports news by keyword",
+          "Filter news by sports categories (Cricket, Football, Hockey, Badminton, Tennis)",
+          "Real-time news fetching from NewsAPI",
+          "Error handling for failed or empty fetch",
+          "Responsive and user-friendly UI"
+        ],
         category: "WEB",
-        image: "/api/placeholder/400/300",
-        details: "Full description of Mindful Unicorn project. A wellness application designed for university students to track mental health, physical activity, and academic performance."
+        image: SportNews,
+        details: "Mindful Unicorn is a React web app designed to display live sports news with real-time search, multiple category filters, and a card-based news display system."
       },
       {
         id: 4,
-        title: "CEPI Pakistan",
-        description: "China Collaboration",
-        features: ["OFAOFA", "Main Chat"],
-        category: "WEB",
-        image: "/api/placeholder/400/300",
-        details: "Full description of CEPI Pakistan project. A cross-border collaboration platform facilitating research exchange between Pakistani and Chinese educational institutions."
+        title: "World Weather Monitor",
+        description: "A real-time weather application providing live weather updates for cities across World and beyond.",
+        features: [
+          "Real-time Weather Updates",
+          "City-based Search",
+          "Humidity and Wind Speed Details",
+          "Error Handling for Invalid City Names",
+          "Responsive and User-Friendly UI"
+        ],
+        category: "APP",
+        image: WeatheApp,
+        details: "World Weather Monitor offers current temperature, humidity, and wind speed details for any city searched. It provides accurate weather info with a clean interface and effective error handling."
       }
     ],
     APP: [
       {
         id: 1,
-        title: "Smart Stitchers",
-        year: "2016/11",
-        description: "BECAUDER BROOKLYN & SOUNTLY",
-        category: "APP WEB",
-        image: "/api/placeholder/400/300",
-        details: "Full description of Smart Stitchers project. This innovative application combines machine learning with crafting techniques to help amateur stitchers create professional-looking designs.",
-        features: ["Pattern Recognition", "Real-time Guidance", "Community Sharing"]
+        title: "Expense Tracker",
+        // year: "2024/07",
+        description: "A simple React-based Expense Tracker application that allows users to add income and expenses dynamically, view their balance, and track transactions.",
+        category: "APP",
+        image: ExpenseTracker,
+        details: "This application allows users to add transactions (income or expenses), view their total balance, and track financial activities effectively. It features a responsive and user-friendly UI with persistent state management using React Hooks.",
+        features: [
+          "Add transactions (income or expenses)",
+          "View total balance",
+          "View a summary of income and expenses",
+          "Responsive and user-friendly UI",
+          "Persistent state management using React Hooks",
+          "Dynamic balance updates based on transactions"
+        ],
       },
       {
         id: 2,
-        title: "Text App",
-        description: "Communication platform",
-        features: ["TEXTS", "CALL", "PAGES"],
+        title: "World Weather Monitor",
+        description: "A real-time weather application providing live weather updates for cities across World and beyond.",
+        features: [
+          "Real-time Weather Updates",
+          "City-based Search",
+          "Humidity and Wind Speed Details",
+          "Error Handling for Invalid City Names",
+          "Responsive and User-Friendly UI"
+        ],
         category: "APP",
-        image: "/api/placeholder/400/300",
-        details: "Full description of Text App project. A comprehensive communication solution for businesses and individuals featuring secure messaging, voice calling, and collaborative workspaces."
+        image: WeatheApp,
+        details: "World Weather Monitor offers current temperature, humidity, and wind speed details for any city searched. It provides accurate weather info with a clean interface and effective error handling."
       }
     ],
     WEB: [
       {
-        id: 3,
+        id: 1,
         title: "Mindful Unicorn",
-        description: "University Project",
-        features: ["Made by The Same Manufacturer As", "BMI Calculator"],
+        description: "A React-based sports news application that fetches and displays latest sports news including cricket, football, hockey, badminton, and tennis with search and category filters.",
+        features: [
+          "Search sports news by keyword",
+          "Filter news by sports categories (Cricket, Football, Hockey, Badminton, Tennis)",
+          "Real-time news fetching from NewsAPI",
+          "Error handling for failed or empty fetch",
+          "Responsive and user-friendly UI"
+        ],
         category: "WEB",
-        image: "/api/placeholder/400/300",
-        details: "Full description of Mindful Unicorn project. A wellness application designed for university students to track mental health, physical activity, and academic performance."
+        image: SportNews,
+        details: "Mindful Unicorn is a React web app designed to display live sports news with real-time search, multiple category filters, and a card-based news display system."
       },
       {
-        id: 4,
-        title: "CEPI Pakistan",
-        description: "China Collaboration",
-        features: ["OFAOFA", "Main Chat"],
+        id: 2,
+        title: "Collaborative Text Editor",
+        // year: "2024/06",
+        description: "A real-time collaborative text editor built with React and WebSockets. Multiple users can simultaneously edit the same document with instant synchronization across all clients.",
         category: "WEB",
-        image: "/api/placeholder/400/300",
-        details: "Full description of CEPI Pakistan project. A cross-border collaboration platform facilitating research exchange between Pakistani and Chinese educational institutions."
+        image: TextEditor,
+        details: "Features include live user count, connection status indicators, and an elegant, responsive interface.",
+        features: ["Live User Count", "Connection Status Indicators", "Instant Synchronization", "Responsive Interface"]
       }
     ]
   };
@@ -104,7 +148,7 @@ const Portfolio = () => {
       }
     };
 
-    handleResize(); // Set initial value
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -145,7 +189,6 @@ const Portfolio = () => {
     setTimeout(() => setSelectedProject(null), 300);
   };
 
-  // Calculate layout classes based on screen size
   const getLayoutClasses = () => {
     switch (screenSize) {
       case 'mobile':
@@ -162,7 +205,7 @@ const Portfolio = () => {
           grid: 'grid-cols-2 gap-5',
           tabs: 'justify-center text-base',
         };
-      default: // desktop
+      default:
         return {
           container: 'px-8 py-20 ml-72',
           title: 'text-5xl',
@@ -181,17 +224,15 @@ const Portfolio = () => {
           PORTFOLIO
           <div className="h-1 w-12 bg-blue-500 mt-3"></div>
         </h2>
-        
-        {/* Tabs */}
+
         <div className={`flex ${layout.tabs} mb-8 border-b border-gray-700`}>
           {['ALL', 'APP', 'WEB'].map((tab) => (
             <button
               key={tab}
-              className={`px-4 md:px-8 py-3 font-medium relative ${
-                activeTab === tab 
-                  ? 'text-blue-400' 
-                  : 'text-gray-400 hover:text-white'
-              }`}
+              className={`px-4 md:px-8 py-3 font-medium relative ${activeTab === tab
+                ? 'text-blue-400'
+                : 'text-gray-400 hover:text-white'
+                }`}
               onClick={() => setActiveTab(tab)}
             >
               {tab}
@@ -202,17 +243,16 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
         <div className={`grid ${layout.grid}`}>
           {projects[activeTab].map((project) => (
-            <div 
+            <div
               key={project.id}
               className="bg-gray-900 bg-opacity-70 rounded-lg overflow-hidden cursor-pointer hover:translate-y-[-5px] hover:shadow-lg transition-all duration-300 border border-gray-800"
               onClick={() => openProjectModal(project)}
             >
               <div className="relative h-48 md:h-56 bg-gray-800">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
                 />
@@ -237,29 +277,28 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Project Modal */}
         {isModalOpen && selectedProject && (
           <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-3 md:p-6">
-            <div 
+            <div
               ref={modalRef}
               className="bg-gray-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl animate-fade-in"
             >
               <div className="relative">
                 <div className="h-56 md:h-72 bg-gray-800">
-                  <img 
-                    src={selectedProject.image} 
+                  <img
+                    src={selectedProject.image}
                     alt={selectedProject.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                
-                <button 
+
+                <button
                   className="absolute top-3 right-3 bg-gray-900 bg-opacity-70 p-2 rounded-full text-gray-300 hover:text-white hover:bg-blue-600 transition-colors"
                   onClick={closeModal}
                 >
                   <X size={20} />
                 </button>
-                
+
                 <div className="p-6 md:p-8 max-h-[60vh] overflow-y-auto">
                   <div className="flex justify-between items-start mb-5">
                     <div>
@@ -274,18 +313,18 @@ const Portfolio = () => {
                       )}
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-300 text-sm md:text-base mb-6">
                     {selectedProject.description}
                   </p>
-                  
+
                   <div className="mb-6">
                     <h4 className="font-bold text-lg md:text-xl mb-3">Project Details</h4>
                     <p className="text-gray-300 text-sm md:text-base">
                       {selectedProject.details}
                     </p>
                   </div>
-                  
+
                   {selectedProject.features && (
                     <div>
                       <h4 className="font-bold text-lg md:text-xl mb-3">Key Features</h4>
@@ -299,7 +338,7 @@ const Portfolio = () => {
                       </ul>
                     </div>
                   )}
-                  
+
                   <div className="mt-8 flex justify-center">
                     <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-full font-medium transition flex items-center">
                       View Live Project <ExternalLink size={16} className="ml-2" />
@@ -310,8 +349,7 @@ const Portfolio = () => {
             </div>
           </div>
         )}
-        
-        {/* Project navigation - could be added for desktop */}
+
         {screenSize === 'desktop' && isModalOpen && (
           <>
             <button className="fixed top-1/2 left-80 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 p-3 rounded-full text-white hover:bg-blue-600 transition-colors z-50">
@@ -323,7 +361,6 @@ const Portfolio = () => {
           </>
         )}
         
-        {/* Empty state - shown when no projects in category */}
         {projects[activeTab].length === 0 && (
           <div className="flex flex-col items-center justify-center py-20">
             <div className="text-gray-400 text-center">
