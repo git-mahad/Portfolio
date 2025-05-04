@@ -270,7 +270,7 @@ export default function Resume() {
             <p className="text-gray-400 mb-6 md:mb-0">My academic and professional journey</p>
           </div>
 
-          <a
+          {/* <a
             href="https://drive.google.com/file/d/1urmvt_ADecyu6uL5fx0wvJvAr64hpSTw/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
@@ -278,7 +278,7 @@ export default function Resume() {
           >
             <Download size={18} className="mr-2" />
             Download CV
-          </a>
+          </a> */}
 
         </div>
 
