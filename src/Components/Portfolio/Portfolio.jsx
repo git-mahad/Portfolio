@@ -286,14 +286,14 @@ const Portfolio = () => {
                 <p className="text-gray-300 text-sm md:text-base line-clamp-2">{project.description}</p>
                 
                 {/* Add View Live Project button directly in the card */}
-                <div className="mt-4">
+                {/* <div className="mt-4">
                   <button 
                     onClick={(e) => handleViewLiveProject(project.url, e)}
                     className="bg-blue-600 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm font-medium transition flex items-center"
                   >
                     View Live Project <ExternalLink size={14} className="ml-2" />
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
