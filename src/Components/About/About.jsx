@@ -78,11 +78,9 @@ export default function About() {
         
         <div className="bg-gray-900 bg-opacity-70 p-4 sm:p-6 md:p-8 rounded-lg mb-12 shadow-lg">
           <p className="mb-6 text-sm sm:text-base">
-          A recent BSCS graduate from UET Lahore with a strong foundation in frontend and backend development, 
-          as well as database management. Proficient in JavaScript, HTML, CSS, and familiar with modern frameworks 
-          and tools. Comfortable with backend concepts and database systems (SQL, NoSql). Passionate about building
-          scalable, user-friendly applications and eager to contribute to real-world projects. Quick learner with 
-          strong problem-solving skills and a collaborative mindset.
+          Software Engineer specializing in backend development and database management. Experienced in 
+          building secure, scalable APIs and working with SQL/NoSQL databases. Passionate about solving 
+          complex problems and delivering reliable, high-performance backend solutions.
           </p>
 
           <div className="flex flex-col lg:flex-row gap-6 md:gap-8 mb-8">
@@ -130,7 +128,7 @@ export default function About() {
                   </p>
                   <p className="flex flex-wrap text-sm sm:text-base">
                     <span className="font-semibold w-20">Skills:</span>
-                    <span>MERN, React</span>
+                    <span>Node, Nest</span>
                   </p>
                 </div>
               </div>
@@ -138,10 +136,10 @@ export default function About() {
               <div className="mb-6">
                 <h3 className="text-lg sm:text-xl font-bold mb-2">Results</h3>
                 <p className="text-sm sm:text-base">
-                  As a Full-stack developer, I have successfully contributed to a diverse range of projects spanning both national and
-                  seed enterprises, operating on various scales. My capabilities extend to managing concurrent tasks efficiently.
-                  I actively participated in our organization's recruitment drive and training department, demonstrating my commitment 
-                  to both growth and team dynamics.
+                As a Backend-focused Software Engineer, I have contributed to projects across different scales, 
+                from startups to established organizations. Skilled at managing multiple tasks efficiently while 
+                maintaining high-quality output. I have also been actively involved in recruitment and training 
+                initiatives, reflecting my commitment to both professional growth and fostering strong team collaboration.
                 </p>
               </div>
             </div>
@@ -150,11 +148,12 @@ export default function About() {
           <div>
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-center sm:text-left">Milestones</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
-              <MilestoneItem end={23} text="REST APIs" showPlus={true} />
-              <MilestoneItem end={6} text="React Projects" />
-              <MilestoneItem end={3} text="MERN Projects" />
-              <MilestoneItem end={12} text="C++ Projects" showPlus={true} />
-              <MilestoneItem end={2} text="Java Projects" />
+              <MilestoneItem end={40} text="REST APIs" showPlus={true} />
+              <MilestoneItem end={4} text="React" />
+              <MilestoneItem end={10} text="MERN" showPlus/>
+              <MilestoneItem end={5} text="Node/Nest" showPlus/>
+              <MilestoneItem end={12} text="C++" showPlus={true} />
+              <MilestoneItem end={2} text="Java" />
               <MilestoneItem end={5} text="HTML, CSS, JS" showPlus={true} />
             </div>
           </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import P8image from '../../assets/P8.jpeg';
 
-const titles = [ "MERN Developer", "React Developer", "NodeJs Developer"];
+const titles = [ "Nest Developer", "Node Developer", "Backend Developer"];
 
 export default function Home() {
   const [textIndex, setTextIndex] = useState(0);
@@ -48,12 +48,10 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, [displayedText, isDeleting, textIndex]);
 
-  // Calculate responsive values based on screen size
   const isMobile = windowSize.width < 640;
   const isTablet = windowSize.width >= 640 && windowSize.width < 1024;
   const isDesktop = windowSize.width >= 1024;
 
-  // Sidebar offset for content
   const sidebarOffset = isDesktop ? 'lg:ml-72' : '';
 
   return (
@@ -110,7 +108,6 @@ export default function Home() {
             </div>
           </div>
           
-          {/* Scroll indicator */}
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />

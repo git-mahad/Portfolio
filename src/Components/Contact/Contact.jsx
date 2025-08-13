@@ -23,15 +23,13 @@ const Contact = () => {
             setIsTablet(width >= 640 && width < 1024);
             setIsDesktop(width >= 1024);
 
-            // Match sidebar behavior - automatically adjust margin based on screen size
             if (width >= 1024) {
-                setSidebarOpen(true); // Desktop always has sidebar
+                setSidebarOpen(true);
             } else {
-                setSidebarOpen(false); // Mobile/tablet has collapsed sidebar
+                setSidebarOpen(false);
             }
         };
 
-        // Initialize and add event listener
         handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -61,7 +59,6 @@ const Contact = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate form submission
         setTimeout(() => {
             setIsSubmitting(false);
             setSubmitStatus('success');
@@ -77,7 +74,6 @@ const Contact = () => {
         <section
             id="contact"
             className={`min-h-screen text-white transition-all duration-300 ${
-                // Match sidebar behavior - Full width on mobile, margin on desktop
                 isMobile ? 'px-4 py-16' :
                     isTablet ? 'px-6 py-16' :
                         'ml-72 p-12'
@@ -90,13 +86,11 @@ const Contact = () => {
                 </h2>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-                    {/* Contact Information */}
                     <div className="lg:col-span-1">
                         <div className="bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-lg">
                             <h3 className="text-xl md:text-2xl font-bold mb-6">Get In Touch</h3>
 
                             <div className="space-y-5">
-                                {/* Email */}
                                 <a
                                     href="mailto:mahad.dev3@gmail.com"
                                     className="flex items-center group hover:text-blue-400 transition-colors"
@@ -112,7 +106,6 @@ const Contact = () => {
                                     </div>
                                 </a>
 
-                                {/* Phone */}
                                 <a
                                     href="tel:+923051479956"
                                     className="flex items-center group hover:text-green-400 transition-colors"
@@ -128,7 +121,6 @@ const Contact = () => {
                                     </div>
                                 </a>
 
-                                {/* WhatsApp */}
                                 <a
                                     href="https://wa.me/923051479956"
                                     target="_blank"
@@ -146,7 +138,6 @@ const Contact = () => {
                                     </div>
                                 </a>
 
-                                {/* Location */}
                                 <div className="flex items-center">
                                     <div className="flex justify-center items-center h-12 w-12 rounded-full bg-gray-800 mr-4">
                                         <MapPin className="w-5 h-5" />
@@ -160,7 +151,6 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    {/* Contact Form */}
                     <div className="lg:col-span-2">
                         <div className="bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-lg">
                             <h3 className="text-xl md:text-2xl font-bold mb-6">Send Me A Message</h3>
