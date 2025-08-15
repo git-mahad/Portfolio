@@ -55,19 +55,39 @@ const Contact = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setSubmitStatus(null);
 
-        setTimeout(() => {
+        try {
+            const response = await fetch('http://localhost:3001/api/email/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setSubmitStatus('success');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+            } else {
+                setSubmitStatus('error');
+                console.error('Failed to send message:', result.message);
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            setSubmitStatus('error');
+        } finally {
             setIsSubmitting(false);
-            setSubmitStatus('success');
-            setFormData({ name: '', email: '', subject: '', message: '' });
-
+            
             setTimeout(() => {
                 setSubmitStatus(null);
-            }, 3000);
-        }, 1000);
+            }, 5000);
+        }
     };
 
     return (
@@ -229,6 +249,11 @@ const Contact = () => {
                                     {submitStatus === 'success' && (
                                         <p className="text-green-400 text-center sm:text-left w-full sm:w-auto">
                                             Message sent successfully!
+                                        </p>
+                                    )}
+                                    {submitStatus === 'error' && (
+                                        <p className="text-red-400 text-center sm:text-left w-full sm:w-auto">
+                                            Failed to send message. Please try again.
                                         </p>
                                     )}
                                 </div>
