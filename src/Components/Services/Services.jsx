@@ -81,15 +81,6 @@ const Services = () => {
       features: ["Algorithm Optimization", "Memory Management", "System Programming", "Performance Tuning"]
     },
     
-
-    // {
-    //   id: 7,
-    //   title: "Salesforce",
-    //   description: "Custom Salesforce implementations and integrations for business growth.",
-    //   icon: <Cloud className="w-8 h-8 md:w-10 md:h-10 text-sky-400" />,
-    //   details: "Expert Salesforce development and customization services to streamline your business processes. I create custom objects, automate workflows, develop Lightning components, and integrate Salesforce with external systems to maximize your ROI.",
-    //   features: ["Custom Development", "Process Automation", "Integration Solutions", "User Training"]
-    // }
   ];
 
   return (

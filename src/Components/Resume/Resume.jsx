@@ -16,12 +16,11 @@ export default function Resume() {
       }
     };
 
-    handleResize(); // Set initial value
+    handleResize(); 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Calculate layout classes based on screen size
   const getLayoutClasses = () => {
     switch (screenSize) {
       case 'mobile':
@@ -40,7 +39,7 @@ export default function Resume() {
           itemTitle: 'text-xl',
           itemFlex: 'justify-between items-start',
         };
-      default: // desktop
+      default:
         return {
           container: 'px-8 py-20 ml-72',
           title: 'text-5xl',
@@ -53,12 +52,11 @@ export default function Resume() {
 
   const layout = getLayoutClasses();
 
-  // Resume Data
   const resumeData = {
     education: [
       {
         degree: "BACHELOR OF COMPUTER SCIENCE",
-        institution: "UET Lahore, Pakistan",
+        institution: "University of Engineering and Technology, Lahore",
         period: "11/2021 - 05/2025",
         description: "Studied core concepts in computer science, including software engineering, database systems, and web development.",
         relevantCoursework: [
@@ -68,47 +66,67 @@ export default function Resume() {
           "Web Application Development",
           "Software Engineering Principles"
         ],
+      },
+      {
+        degree: "FSC Engineering",
+        institution: "Punjab Group of Colleges, Lahore",
+        period: "09/2019 - 05/2021",
+        description: "Completed intermediate studies with a focus on mathematics and physics, laying a strong foundation for computer science.",
+        relevantCoursework: [
+          "Mathematics",
+          "Physics",
+          "Chemistry",
+          "English Literature",
+        ]
       }
     ],
     experience: [
       {
+        title: "Backend Developer",
+        company: "iTitans",
+        type: "Full Time | Onsite",
+        period: "06/2025 - Present",
+        description: "Backend Developer specializing in Node.js and NestJS to build robust server-side applications.",
+        responsibilities: [
+          "Developed server-side logic using Node.js and NestJS.",
+          "Collaborated with frontend teams to integrate APIs.",
+          "Contributed to code reviews to maintain high code quality.",
+          "Designed and optimized database architectures for efficient data management."
+        ]
+      },
+      {
+        title: "Full Stack Developer",
+        company: "NAVTECH",
+        type: "Course + Intership | Onsite",
+        period: "03/2025 - 06/2025",
+        description: "Completed a comprehensive full-stack development course focusing on React and Node.js.",
+        responsibilities: [
+          "Developed full-stack web solutions using modern technologies.",
+          "Demonstrated proficiency in React and Node.js",
+          "Gained knowledge of best practices in software development and project management."
+        ]
+      },
+      {
         title: "Frontend Developer (Contract)",
         company: "New Frontier Lab",
-        location: "Remote (Lahore, Pakistan)",
         type: "Contract | Remote",
         period: "06/2024 - 09/2024",
         description: "Frontend Developer specializing in HTML, CSS, JavaScript, and React to create engaging web applications.",
         responsibilities: [
-          "Developed responsive user interfaces with React, HTML, and CSS.",
-          "Enhanced user engagement through effective web application implementation.",
-          "Collaborated with designers and backend developers for seamless functionality.",
-          "Contributed to code reviews to maintain high code quality."
-        ]
-      },
-      {
-        title: "Freelancer",
-        company: "Fiverr.com",
-        location: "Remote",
-        type: "Full Time | Remote",
-        period: "11/2024 - Present",
-        description: "Providing end-to-end web development services as a Full Stack Developer for clients worldwide.",
-        responsibilities: [
-          "Delivering full-stack web solutions, including frontend (HTML, CSS, JavaScript) and backend (Node.js, Express) development.",
-          "Designing and optimizing database architectures for efficient data management.",
-          "Creating customized web applications tailored to client needs from concept to deployment.",
-          "Building responsive interfaces and robust server-side functionality for seamless user experiences.",
-          "Ensuring timely project delivery while maintaining high code quality."
+          "Collaborated with designers and backend developers.",
+          "Contributed to code reviews to ensure high quality and seamless functionality."
         ]
       }
     ],
+
     skills: [
       {
         category: "Frontend",
-        items: ["HTML5", "CSS3", "JavaScript", "React", "Tailwind CSS", "Bootstrap"]
+        items: ["HTML5", "CSS3", "JavaScript", "React", "Tailwind CSS", "Bootstrap", "Angular", "Typescript"]
       },
       {
         category: "Backend",
-        items: ["Node.js", "Express", "MongoDB", "SQL", "REST APIs"]
+        items: ["Node.js", "Nest.js", "Express", "MongoDB", "SQL", "REST APIs", "Typescript"]
       },
       {
         category: "Tools & Technologies",
@@ -121,19 +139,19 @@ export default function Resume() {
     ],
     certifications: [
       {
-        title: "HTML && CSS",
-        issuer: "Udemy",
-        date: "2022"
+        title: "Nestjs",
+        issuer: "CodeSignal",
+        date: "Jul 2025"
       },
       {
-        title: "Complete Frontend Course",
-        issuer: "Coursera",
-        date: "2023"
+        title: "Database",
+        issuer: "Mindluster",
+        date: "Mar 2024"
       },
       {
-        title: "Full Stack Developer",
-        issuer: "Udemy",
-        date: "2023-24"
+        title: "Advance Nest.js",
+        issuer: "Mindluster",
+        date: "Aug 2025"
       }
     ]
   };
@@ -154,11 +172,7 @@ export default function Resume() {
                   Specialization: {edu.specialization}
                 </div>
               )}
-              {/* {edu.gpa && (
-                <div className="text-gray-300 text-sm mt-1">
-                  GPA: {edu.gpa}
-                </div>
-              )} */}
+
             </div>
             <span className={`bg-blue-600 text-white px-3 py-1 rounded text-xs md:text-sm flex items-center ${screenSize === 'mobile' ? 'self-start mt-2' : ''
               }`}>
@@ -237,7 +251,6 @@ export default function Resume() {
         </div>
       ))}
 
-      {/* Certifications */}
       <div className="md:col-span-2 bg-gray-800 bg-opacity-50 p-5 rounded-lg border border-gray-700 mt-3">
         <h4 className="text-lg font-semibold mb-4 text-blue-400">Certifications</h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -270,15 +283,6 @@ export default function Resume() {
             <p className="text-gray-400 mb-6 md:mb-0">My academic and professional journey</p>
           </div>
 
-          {/* <a
-            href="https://drive.google.com/file/d/1urmvt_ADecyu6uL5fx0wvJvAr64hpSTw/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center self-start transition-colors"
-          >
-            <Download size={18} className="mr-2" />
-            Download CV
-          </a> */}
 
         </div>
 
